@@ -42,11 +42,11 @@ function ENT:Draw()
     self:DrawModel()
 
     -- The text to display
-	local textVelocity = "Velocity: " .. tostring(math.floor(self:GetVelocity().x)) .. "x " .. tostring(math.floor(self:GetVelocity().y)) .. "y " .. tostring(math.floor(self:GetVelocity().z)) .. "z"
-	local textFriction = "Friction: " .. tostring(FRICTION)
-	local textGravity = "Gravity: " .. tostring(GRAVITY)
-	local textMass = "Mass: " .. tostring(MASS)
-	local textAirDensity = "Air Density: " .. tostring(AIR_DENSITY)
+	local textVelocity = "Velocity: " .. tostring(math.floor(self:GetVelocity().x)) .. "m/s"
+	local textFriction = "Friction: " .. tostring(FRICTION) .. "mu"
+	local textGravity = "Gravity: " .. tostring(GRAVITY) .. "m/s^2"
+	local textMass = "Mass: " .. tostring(MASS) .. "kg"
+	local textAirDensity = "Air Density: " .. tostring(AIR_DENSITY) .. "kg/m^3"
 
 	-- The position. We use model bounds to make the text appear just above the model. Customize this to your liking.
 	local mins, maxs = self:GetModelBounds()
