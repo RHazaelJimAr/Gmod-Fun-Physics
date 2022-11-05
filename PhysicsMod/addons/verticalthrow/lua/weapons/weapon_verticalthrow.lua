@@ -1,6 +1,6 @@
 SWEP.PrintName = "Vertical Throw" -- This will be shown in the spawn menu, and in the weapon selection menu
 SWEP.Author = "Randy" -- These two options will be shown when you have the weapon highlighted in the weapon selection menu
-SWEP.Instructions = "Left mouse to apply 100N of vertical force to an object, right click for -100N"
+SWEP.Instructions = "Left mouse to apply 300N of vertical force to an object, right click for -300N"
 
 SWEP.Spawnable = true
 SWEP.AdminOnly = true

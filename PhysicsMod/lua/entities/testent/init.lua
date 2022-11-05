@@ -9,7 +9,7 @@ util.AddNetworkString("friction_update")
 util.AddNetworkString("airdensity_update")
 
 function ENT:Initialize()
-    self:SetModel("models/props_furniture/bathtub1.mdl")
+    self:SetModel("models/props_interiors/BathTub01a.mdl")
     self:PhysicsInit(SOLID_VPHYSICS)
     self:SetMoveType(MOVETYPE_VPHYSICS)
     self:SetSolid(SOLID_VPHYSICS)
@@ -20,35 +20,36 @@ function ENT:Initialize()
 
     if (phys:IsValid()) then
         phys:Wake()
+        MASS = phys:GetMass()
+        net.Start("mass_update")
+        net.WriteFloat(MASS)
+        net.Broadcast()
+
+        GRAVITY = 0.01905 * -physenv.GetGravity().z
+        net.Start("gravity_update")
+        net.WriteFloat(GRAVITY)
+        net.Broadcast()
+
+        FRICTION = self:GetFriction()
+        net.Start("friction_update")
+        net.WriteFloat(FRICTION)
+        net.Broadcast()
+
+        AIR_DENSITY = physenv.GetAirDensity()
+        net.Start("airdensity_update")
+        net.WriteFloat(AIR_DENSITY)
+        net.Broadcast()
     end
-
-    MASS = phys:GetMass()
-    net.Start("mass_update")
-    net.WriteFloat(MASS)
-    net.Broadcast()
-
-    GRAVITY = 0.01905 * -physenv.GetGravity().z
-    net.Start("gravity_update")
-    net.WriteFloat(GRAVITY)
-    net.Broadcast()
-
-    FRICTION = self:GetFriction()
-    net.Start("friction_update")
-    net.WriteFloat(FRICTION)
-    net.Broadcast()
-
-    AIR_DENSITY = physenv.GetAirDensity()
-    net.Start("airdensity_update")
-    net.WriteFloat(AIR_DENSITY)
-    net.Broadcast()
 end
 
 function ENT:Think()
     local phys = self:GetPhysicsObject()
-    MASS = phys:GetMass()
-    GRAVITY = 0.01905 * -physenv.GetGravity().z
-    FRICTION = self:GetFriction()
-    AIR_DENSITY = physenv.GetAirDensity()
+    if IsValid(phys) then
+        MASS = phys:GetMass()
+        GRAVITY = 0.01905 * -physenv.GetGravity().z
+        FRICTION = self:GetFriction()
+        AIR_DENSITY = physenv.GetAirDensity()
+    end
     net.Start("mass_update")
     net.WriteFloat(MASS)
     net.Broadcast()

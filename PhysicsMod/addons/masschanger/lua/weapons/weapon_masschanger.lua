@@ -36,7 +36,7 @@ function SWEP:PrimaryAttack()
     self:SetNextPrimaryFire(CurTime() + 0.1)
 
     -- Call 'ThrowChair' on self with this model
-    self:MassAddition(25)
+    self:MassAddition(1)
 end
 
 -- Called when the rightmouse button is pressed
@@ -45,7 +45,7 @@ function SWEP:SecondaryAttack()
     -- players shouldn't be able to fire too fast
     self:SetNextSecondaryFire(CurTime() + 0.1)
 
-    self:MassAddition(-25)
+    self:MassAddition(-1)
 end
 
 -- A custom function we added. When you call this the player will fire off a chair!
