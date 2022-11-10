@@ -5,10 +5,6 @@ ENT.PrintName = "Physics Bathtub"
 
 ENT.Spawnable = true
 
-function ENT:SetupDataTables()
-    self:NetworkVar("Int", 1, "TestInt")
-end
-
 MASS = 0
 GRAVITY = 0
 FRICTION = 0

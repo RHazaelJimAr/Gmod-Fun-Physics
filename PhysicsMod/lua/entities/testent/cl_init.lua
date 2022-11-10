@@ -80,10 +80,4 @@ function ENT:Draw()
 	Draw3DText( pos + Vector(0, 0, 40), ang, 0.2, textAirDensity, false )
 	-- DrawDraw3DTextback
 	Draw3DText( pos + Vector(0, 0, 40), ang, 0.2, textAirDensity, true )
-
-	phys = self:GetPhysicsObject()
-    if ( input.IsKeyDown == KEY_SPACE ) then
-        phys:ApplyForceCenter( self:GetVelocity() + Vector( 0, 0, 1000 ) )
-        print("jump")
-    end
 end
